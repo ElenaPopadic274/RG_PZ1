@@ -367,21 +367,22 @@ namespace PZ1
             }
             else
             {
-                if (clickedShape != null)
+                Shape clickedShapeOblici = e.OriginalSource as Shape;
+                if (clickedShapeOblici != null)
                 {
                     ChangeShapeColor changeShapeColor = new ChangeShapeColor();
-                    changeShapeColor.BorderThicknessTextBox.Text = clickedShape.StrokeThickness.ToString();
+                    changeShapeColor.BorderThicknessTextBox.Text = clickedShapeOblici.StrokeThickness.ToString();
                     changeShapeColor.ShowDialog();
                     if (changeShapeColor.ApplyChange)
                     {
-                        listAllShapes.Remove(clickedShape);
+                        listAllShapes.Remove(clickedShapeOblici);
                         // Shape tempShape = clickedShape;
-                        clickedShape.Fill = getColor(changeShapeColor.FillColor);
-                        clickedShape.Stroke = getColor(changeShapeColor.BorderColor);
-                        clickedShape.StrokeThickness = changeShapeColor.ShapeBorderThickness;
+                        clickedShapeOblici.Fill = getColor(changeShapeColor.FillColor);
+                        clickedShapeOblici.Stroke = getColor(changeShapeColor.BorderColor);
+                        clickedShapeOblici.StrokeThickness = changeShapeColor.ShapeBorderThickness;
                         //PaintCanvas.Children.Remove(clickedShape);
                         // PaintCanvas.Children.Add(tempShape);  
-                        listAllShapes.Add(clickedShape);
+                        listAllShapes.Add(clickedShapeOblici);
                     }
                 }
             }
@@ -658,9 +659,9 @@ namespace PZ1
             currShape = Shapes.NoShape;
         }
 
-        private void mapCanvas_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        private void Canvas_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
         {
-            pointc = e.GetPosition(this);
+            //pointc = e.GetPosition(this);
             switch (currShape)
             {
                 case Shapes.NoShape:
@@ -681,13 +682,13 @@ namespace PZ1
                     drawAddText.ShowDialog();
                     if (drawAddText.Draw)
                     {
-                        DrawAddText(drawAddText.RectangleWidth, drawAddText.RectangleHeight, drawAddText.FillColor, drawARectangle.BorderColor, drawAddText.RectangleBorderThickness);
+                        DrawAddText(drawAddText.TextColor, drawAddText.TextSize, drawAddText.Text);
                     }
                     break;
 
                 case Shapes.Polygon:
                     pointc.y = pointc.y - 45;
-                    polygonPoints.Add(pointc);
+                    //polygonPoints.Add(pointc);
                     break;
 
                 default:
@@ -713,27 +714,7 @@ namespace PZ1
 
             undoRedo.InsertShapeforUndoRedo(newEllipse);
         }
-        /*
-        private void DrawRectangle(double width, double height, string fillcolor, string bordercolor, double borderthickness)
-        {
-            Rectangle newRectangle = new Rectangle();
-            
-            newRectangle.SetValue(Canvas.LeftProperty, point.X);
-            newRectangle.SetValue(Canvas.TopProperty, point.Y - 45);
-            newRectangle.Width = width;
-            newRectangle.Height = height;
-            newRectangle.Fill = getColor(fillcolor);
-            newRectangle.Stroke = getColor(bordercolor);
-            newRectangle.StrokeThickness = borderthickness;
-
-            mapCanvas.Children.Add(newRectangle);
-            ListAllShapes.Add(newRectangle);
-            currShape = Shapes.NoShape;
-           
-            undoRedo.InsertShapeforUndoRedo(newRectangle);
-        }
-        */
-        private void DrawAddText()
+        private void DrawAddText(string textcolor, string textsize, double text)
         { 
         
         }

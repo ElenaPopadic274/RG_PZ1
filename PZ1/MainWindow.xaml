@@ -6,31 +6,31 @@
         xmlns:local="clr-namespace:PZ1"
         mc:Ignorable="d"
           Title="PowerGrid"
-        WindowState="Maximized">
+        WindowState="Normal" Width="1019.2">
     <DockPanel>
-        <Grid DockPanel.Dock="Top" Height="41" Margin="0,0,-0.4,0" Background="#30a141" RenderTransformOrigin="0.514,-4.015">
+        <Grid DockPanel.Dock="Top" Height="78" Margin="0,0,-0.2,0" Background="#FFDDA0DD" RenderTransformOrigin="0.514,-4.015">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="315*"/>
                 <ColumnDefinition Width="82*"/>
             </Grid.ColumnDefinitions>
-            <Label Margin="166,5,380.6,6" Content="ZOOM:" FontWeight="Bold"/>
-            <Slider x:Name="ZoomSlider" Maximum="2" Value="1.25" Minimum=".5" Margin="228,10,181,6"  />
-            <Button x:Name="LoadButton" Content="Load Grid" HorizontalAlignment="Left" FontWeight="Bold" Margin="10,5,0,0" VerticalAlignment="Top" Width="63" Height="30" Click="Load_Grid"/>
-            <ProgressBar x:Name="progressBar" HorizontalAlignment="Left" Height="30" Margin="78,5,0,0" VerticalAlignment="Top" Width="83" Minimum="0" Maximum="100"/>
-            <TextBlock  x:Name="progressText" TextAlignment="Center" HorizontalAlignment="Left" Margin="179,21,0,-9" VerticalAlignment="Top" FontWeight="Bold"  TextWrapping="Wrap" Width="170" Height="29"/>
+            <Label Margin="255,19,496,33" Content="ZOOM:" FontWeight="Bold"/>
+            <Slider x:Name="ZoomSlider" Maximum="2" Value="1.25" Minimum=".5" Margin="308,19,249,31"  />
+            <Button x:Name="LoadButton" Content="Load Grid" HorizontalAlignment="Left" FontWeight="Bold" Margin="10,19,0,0" VerticalAlignment="Top" Width="75" Height="28" Click="Load_Grid"/>
+            <ProgressBar x:Name="progressBar" HorizontalAlignment="Left" Height="28" Margin="90,19,0,0" VerticalAlignment="Top" Width="160" Minimum="0" Maximum="100"/>
+            <TextBlock  x:Name="progressText" TextAlignment="Center" HorizontalAlignment="Left" Margin="90,19,0,0" VerticalAlignment="Top" FontWeight="Bold"  TextWrapping="Wrap" Width="160" Height="28"/>
 
-            <Button Content="Ellipse" FontWeight="Bold" Name="EllipseButton" Click="EllipseButton_Click" Margin="437,5,121,5"/>
-            <Button Content="Add Text" FontWeight="Bold" Name="TextButton" Click="TextButton_Click" Margin="545,5,0,5" HorizontalAlignment="Left" Width="59"/>
-            <Button Content="Polygon" FontWeight="Bold" Name="PolygonButton" Click="PolygonButton_Click" Margin="488,5,64,5"/>
-            <Button Content="Undo" FontWeight="Bold" Name="UndoButton" Click="UndoButton_Click" Margin="0,5,108.6,5" Grid.Column="1" HorizontalAlignment="Right" Width="44"/>
-            <Button Content="Redo" FontWeight="Bold"  Name="RedoButton" Click="RedoButton_Click" Margin="54,5,63.6,5" Grid.Column="1"/>
-            <Button Content="Clear" FontWeight="Bold" x:Name="ClearButton" Click="ClearButton_Click" Margin="99,5,10.6,5" Grid.Column="1"/>
+            <Button Content="Ellipse" FontWeight="Bold" Name="EllipseButton" Click="EllipseButton_Click" Margin="560,19,190,0" HorizontalAlignment="Center" VerticalAlignment="Top" Height="28" Width="60"/>
+            <Button Content="Add Text" FontWeight="Bold" Name="TextButton" Click="TextButton_Click" Margin="0,19,38,0" HorizontalAlignment="Right" Width="60" Height="28" VerticalAlignment="Top"/>
+            <Button Content="Polygon" FontWeight="Bold" Name="PolygonButton" Click="PolygonButton_Click" Margin="630,19,114,0" HorizontalAlignment="Center" VerticalAlignment="Top" Height="28" Width="60"/>
+            <Button Content="Undo" FontWeight="Bold" Name="UndoButton" Click="UndoButton_Click" Margin="0,19,156.8,0" HorizontalAlignment="Right" Width="60" Height="28" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+            <Button Content="Redo" FontWeight="Bold"  Name="RedoButton" Click="RedoButton_Click" Margin="0,19,82.8,0" Height="28" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Top" Width="60"/>
+            <Button Content="Clear" FontWeight="Bold" x:Name="ClearButton" Click="ClearButton_Click" Margin="0,19,9.8,0" Grid.Column="1" Height="28" HorizontalAlignment="Right" VerticalAlignment="Top" Width="60"/>
 
         </Grid>
 
         <Grid>
-            <ScrollViewer  HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Grid.ColumnSpan="2" Margin="0,0,-0.4,0">
-                <Canvas  Name="mapCanvas" Height="2200" Width="2200" MouseLeftButtonDown="Canvas_MouseLeftButtonDown" MouseRightButtonUp="PaintCanvas_MouseRightButtonDown">
+            <ScrollViewer  HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Margin="0,0,-0.4,0.2">
+                <Canvas  Name="mapCanvas" Height="2200" Width="2200" MouseLeftButtonDown="Canvas_MouseLeftButtonDown" MouseRightButtonUp="Canvas_MouseRightButtonDown">
                     <Canvas.LayoutTransform>
                         <ScaleTransform ScaleX="{Binding ElementName=ZoomSlider, Path=Value}"
                                      ScaleY="{Binding ElementName=ZoomSlider, Path=Value}"/>

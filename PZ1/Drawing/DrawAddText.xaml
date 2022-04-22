@@ -5,8 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PZ1.Drawing"
         mc:Ignorable="d"
-        Title="DrawAddText" Height="450" Width="800">
+        WindowStartupLocation="CenterScreen"
+        Title="Add Text" Height="197.897" Width="248.675">
     <Grid>
-        
+        <Label Content="Input Text:" HorizontalAlignment="Left" Margin="10,22,0,0" VerticalAlignment="Top" Width="82"/>
+        <TextBox Name="TTBox" HorizontalAlignment="Left" Height="26" Margin="92,22,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140"/>
+        <Button Content="Cancel" HorizontalAlignment="Left" Margin="10,139,0,0" VerticalAlignment="Top" Width="105" Click="ButtonCancel_Click"/>
+        <Button Content="Apply" HorizontalAlignment="Left" Margin="127,139,0,0" VerticalAlignment="Top" Width="105" Click="ButtonDraw_Click"/>
+        <Label Content="Text Color:" HorizontalAlignment="Left" Margin="10,61,0,0" VerticalAlignment="Top" Width="82"/>
+        <Label Content="Text Size:" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top" Width="82"/>
+        <ComboBox Name="TextColorComboBox" HorizontalAlignment="Left" Margin="92,61,0,0" VerticalAlignment="Top" Width="140" Height="26"/>
+        <ComboBox Name="TextSizeComboBox" HorizontalAlignment="Left" Margin="92,100,0,0" VerticalAlignment="Top" Width="140" Height="26"/>
     </Grid>
 </Window>
