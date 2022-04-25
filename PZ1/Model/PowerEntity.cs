@@ -8,10 +8,12 @@ namespace PZ1.Model
 {
     public class PowerEntity
     {
-        private long id;
-        private string name;
-        private double x;
-        private double y;
+
+        //citas atribute iz xmla
+        private long id;         //node, switch
+        private string name;     //node, switch
+        private double x;        //node, switch
+        private double y;        //node, switch
         private double latitude;
         private double longitude;
 

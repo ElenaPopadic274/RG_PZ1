@@ -28,7 +28,7 @@ namespace PZ1
    
 
     //Graf
-    public struct Point  // struktura...koristim kao kljuc u recniku (dictionari)
+    public struct Point  // struktura...koristim kao kljuc u recniku (dictionary)
     {
         public double x;
         public double y;
@@ -66,9 +66,10 @@ namespace PZ1
         private static Dictionary<Point, LineType> verticalLineOnPoint = new Dictionary<Point, LineType>();
         public XmlEntities xmlEntities { get; set; }
 
+
         //Crtanje 
         private Shapes currShape;
-        Point pointc;
+        System.Windows.Point pointc;
         PointCollection polygonPoints = new PointCollection(); //Points for polygon
         UndoRedo undoRedo = new UndoRedo();
         private List<FrameworkElement> listAllShapes = new List<FrameworkElement>();
@@ -106,7 +107,7 @@ namespace PZ1
                 mapCanvas.Children.Add(item);
             }
 
-            progressBar.Dispatcher.Invoke(() => progressBar.Value = 60, DispatcherPriority.Background);
+            progressBar.Dispatcher.Invoke(() => progressBar.Value = 70, DispatcherPriority.Background);
             progressText.Text = "70 %";
 
 
@@ -125,7 +126,6 @@ namespace PZ1
             foreach (var point in horizontalLineOnPoint.Keys)
             {
                 int step = 10;
-
                 if (verticalLineOnPoint.ContainsKey(new Point(point.x, point.y)))
                 {
                     Rectangle rectangle = new Rectangle();
@@ -401,7 +401,7 @@ namespace PZ1
         private static Model.Point CreatePoint(double longitude, double latitude)
         {
             double ValueoOfOneLongitude = (maxLongitude - minLongitude) / 2200; //pravimo 2200delova (Longituda) jer nam je canvas 2200x2200 
-            double ValueoOfOneLatitude = (maxLatitude - minLatitude) / 2200;  //isto kao gore
+            double ValueoOfOneLatitude = (maxLatitude - minLatitude) / 2200;  
 
             double x = Math.Round((longitude - minLongitude) / ValueoOfOneLongitude); // koliko longituda stane u rastojanje izmedju trenutne i minimalne longitude
             double y = Math.Round((maxLatitude - latitude) / ValueoOfOneLatitude);
@@ -661,13 +661,14 @@ namespace PZ1
 
         private void Canvas_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
         {
-            //pointc = e.GetPosition(this);
+            pointc = e.GetPosition(this);
             switch (currShape)
             {
+                /*
                 case Shapes.NoShape:
                     System.Windows.MessageBox.Show("Niste izabrali oblik!", "Greška");
                     break;
-
+                */
                 case Shapes.Ellipse:
                     DrawAEllipse drawAEllipse = new DrawAEllipse();
                     drawAEllipse.ShowDialog();
@@ -687,8 +688,8 @@ namespace PZ1
                     break;
 
                 case Shapes.Polygon:
-                    pointc.y = pointc.y - 45;
-                    //polygonPoints.Add(pointc);
+                    pointc.Y = pointc.Y - 45;
+                    polygonPoints.Add(pointc);
                     break;
 
                 default:
@@ -700,8 +701,8 @@ namespace PZ1
         {
             Ellipse newEllipse = new Ellipse();
           
-            newEllipse.SetValue(Canvas.LeftProperty, pointc.x);
-            newEllipse.SetValue(Canvas.TopProperty, pointc.y - 45);
+            newEllipse.SetValue(Canvas.LeftProperty, pointc.X);
+            newEllipse.SetValue(Canvas.TopProperty, pointc.Y - 45);
             newEllipse.Width = width;
             newEllipse.Height = height;
             newEllipse.Fill = getColor(fillcolor);
@@ -715,8 +716,17 @@ namespace PZ1
             undoRedo.InsertShapeforUndoRedo(newEllipse);
         }
         private void DrawAddText(string textcolor, string textsize, double text)
-        { 
-        
+        {
+            //Text newText = new Text();
+            //newText.SetValue(Canvas.LeftProperty, pointc.X);
+            //newText.SetValue(Canvas.TopProperty, pointc.Y - 45);
+            //newText.textColor = textcolor;
+            //newText.textSize = textsize;
+            //text = text;
+            //mapCanvas.Children.Add(newText);
+            //ListAllShapes.Add(newText);
+            currShape = Shapes.Text;
+            //undoRedo.InsertShapeforUndoRedo(newText);
         }
 
         private void DrawPolygon(string fillcolor, string bordercolor, double borderthickness)

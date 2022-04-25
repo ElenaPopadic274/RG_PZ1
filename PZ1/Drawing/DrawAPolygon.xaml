@@ -8,11 +8,9 @@
         WindowStartupLocation="CenterScreen"
        Title="Draw a Polygon" Height="197.2" Width="247.333">
     <Grid>
-
         <Label Content="Fill Color:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Width="105"/>
         <Label Content="Border Color:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,49,0,0" Width="105"/>
         <Label Content="Border Thickness:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,90,0,0" Width="105"/>
-
         <TextBox Name="BorderThicknessTextBox" HorizontalAlignment="Left" Height="26" Margin="120,90,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="105"/>
         <ComboBox Name="FillColorComboBox" HorizontalAlignment="Left" Margin="120,10,0,0" VerticalAlignment="Top" Width="105" Height="26"/>
         <ComboBox Name="BorderColorComboBox" HorizontalAlignment="Left" Margin="120,49,0,0" VerticalAlignment="Top" Width="105" Height="26"/>
